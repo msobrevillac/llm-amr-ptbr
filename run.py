@@ -3,6 +3,12 @@ import argparse
 from similarity_metrics import return_top_k
 from model import render_prompt
 from model import Sabia_Generator
+import os
+
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
+#os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:32"
+
+
 
 def get_args():
     parser = argparse.ArgumentParser(
@@ -111,9 +117,8 @@ def main():
             sample += "\n\n"
         sample += "AMR: " + reference["amr"] + "\nResposta: "
         
-        print(sample.strip())
-        
         instruction = render_prompt(args.prompt, sample)
+        print(instruction)
         response = model.evaluate(instruction)
         print(response)
         

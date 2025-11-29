@@ -38,7 +38,7 @@ class Sabia_Generator:
             "maritaca-ai/sabia-7b",
             device_map="auto",  # Automatically loads the model in the GPU, if there is one. Requires pip install acelerate
             #low_cpu_mem_usage=True,
-            dtype=torch.bfloat16   # If your GPU does not support bfloat16, change to torch.float16
+            #dtype=torch.bfloat16   # If your GPU does not support bfloat16, change to torch.float16
         )
 
     def evaluate(self, instruction):
